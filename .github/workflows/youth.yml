@@ -1,12 +1,10 @@
-﻿name: 中青看点
+name: 中青阅读
 
 on:
   schedule:
-    - cron: '*/40 5-23 * * *'
-  workflow_dispatch:
+    - cron: '*/14 0-23 * * *'
   watch:
     types: [started]
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,7 +12,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
+        with:
+          ref: 'whyour'
+        
       - name: 'Set up Python'
         uses: actions/setup-python@v1
         with:
@@ -25,9 +25,21 @@ jobs:
 
       - name: 'run 中青阅读'
         # youth_read.py目录自己修改
-        run: python3 Task/youth.py
+        run: python3 quanx/youth.py
         # 目前最大5个账号，可按格式继续填写
         env:
+            YOUTH_HEADER1: ${{ secrets.YOUTH_HEADER1 }}  #必须 账号1 body1
+            YOUTH_READBODY1: ${{ secrets.YOUTH_READBODY1 }}  #必须 账号1 body1
+            YOUTH_READTIMEBODY1: ${{ secrets.YOUTH_READTIMEBODY1 }}  #必须 账号1 body1
+            YOUTH_WITHDRAWBODY1: ${{ secrets.YOUTH_READTIMEBODY1 }}  #非必须 账号1提现 body1           
+            YOUTH_SHAREBODY1: ${{ secrets.YOUTH_SHAREBODY1 }}  #必须 账号1 body1
+            YOUTH_STARTBODY1: ${{ secrets.YOUTH_STARTBODY1 }}  #必须 账号1 body1        
+            YOUTH_HEADER2: ${{ secrets.YOUTH_HEADER2 }}  #非必须 账号2 body2
+            YOUTH_READBODY2: ${{ secrets.YOUTH_READBODY2 }}  #非必须 账号2 body2
+            YOUTH_READTIMEBODY2: ${{ secrets.YOUTH_READTIMEBODY2 }}  #非必须 账号2 body2
+            YOUTH_WITHDRAWBODY2: ${{ secrets.YOUTH_READTIMEBODY2 }}  #非必须 账号2提现 body2
+            YOUTH_SHAREBODY2: ${{ secrets.YOUTH_SHAREBODY2 }}  #非必须 账号2 body2
+            YOUTH_STARTBODY2: ${{ secrets.YOUTH_STARTBODY2 }}  #必须 账号2 body2
             BARK: ${{ secrets.BARK }}  #非必须 bark通知
             SCKEY: ${{ secrets.SCKEY }}  #非必须 server酱通知
             TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}  #非必须 tg机器人token
