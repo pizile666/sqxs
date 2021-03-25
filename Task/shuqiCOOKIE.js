@@ -25,7 +25,7 @@ let cookie1 =
 
 
 //方式二
-let cookie2 = {}
+let cookie2 = 
 
 
 
