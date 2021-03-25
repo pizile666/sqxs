@@ -1,64 +1,43 @@
-name: 书旗小说
-
+name: shuqi@ziye
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '1 */6 * * *'
+    - cron: '7 0-23 * * *'
   watch:
     types: started
+  repository_dispatch:
+    types: ranlv
 jobs:
   build:
+
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
-  
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
-      - name: Use Node.js 12.x
+        uses: actions/checkout@v2
+       
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: ${{ matrix.node-version }}
+      - name: Cache node_modules
+        uses: actions/cache@v2 # 使用 GitHub 官方缓存 Action。
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }} # 使用 package-lock.json 的 Hash 作为缓存的 key。也可以使用 package.json 代替
       - name: npm install
         run: |
           npm install
-      - name: '运行 【书旗】'
-        #if: env.shuqiuserurlVal
+      - name: '运行 【舒淇小说】'
         run: |
           node Task/shuqi.js
         env:
-          shuqiuserurlVal: ${{ secrets.shuqiuserurlVal }}
-          shuqisyurlVal: ${{ secrets.shuqisyurlVal }}
-          shuqisybodyVal: ${{ secrets.shuqisybodyVal }}
-          shuqispbodyVal: ${{ secrets.shuqispbodyVal }}
-          shuqiscbodyVal: ${{ secrets.shuqiscbodyVal }}
-          shuqiydbodyVal: ${{ secrets.shuqiydbodyVal }}
-          shuqiqdbodyVal: ${{ secrets.shuqiqdbodyVal }}
-          shuqirwbodyVal: ${{ secrets.shuqirwbodyVal }}
-          shuqifxbodyVal: ${{ secrets.shuqifxbodyVal }}
-          shuqisprwurlVal: ${{ secrets.shuqisprwurlVal }}
-          shuqijlbodyVal: ${{ secrets.shuqijlbodyVal }}
-          shuqisqjlbodyVal: ${{ secrets.shuqisqjlbodyVal }}
-          shuqicjyurlVal: ${{ secrets.shuqicjyurlVal }}
-          shuqicjcsbodyVal: ${{ secrets.shuqicjcsbodyVal }}
-          shuqicjbodyVal: ${{ secrets.shuqicjbodyVal }}
-          
-          
-          shuqijsspbodyVal: ${{ secrets.shuqijsspbodyVal }}
-          shuqijsydurlVal: ${{ secrets.shuqijsydurlVal }}
-          shuqijsydbodyVal: ${{ secrets.shuqijsydbodyVal }}
-          shuqijsqdbodyVal: ${{ secrets.shuqijsqdbodyVal }}
-          shuqijsqdspyurlVal: ${{ secrets.shuqijsqdspyurlVal }}
-          shuqijsqdspbodyVal: ${{ secrets.shuqijsqdspbodyVal }}
-          shuqijsrwbodyVal: ${{ secrets.shuqijsrwbodyVal }}
-          shuqijsfxbodyVal: ${{ secrets.shuqijsfxbodyVal }}
-          shuqijsbookurlVal: ${{ secrets.shuqijsbookurlVal }}
-          shuqijsbookbodyVal: ${{ secrets.shuqijsbookbodyVal }}
-          shuqijssprwurlVal: ${{ secrets.shuqijssprwurlVal }}
+          RLURL: ${{ secrets.RLURL }}
+          RLHEADER: ${{ secrets.RLHEADER }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
-          BARK_SOUND: ${{ secrets.BARK_SOUND }}
-          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
