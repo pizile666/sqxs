@@ -74,16 +74,16 @@ let cookie2 = {
     shuqicjcsbodyVal: shuqicjcsbodyVal,
     shuqicjbodyVal: shuqicjbodyVal,
 
-    shuqijsspbodyVal: shuqijsspbodyVal,
+    //shuqijsspbodyVal: shuqijsspbodyVal,
     shuqijsydurlVal: shuqijsydurlVal,
     shuqijsydbodyVal: shuqijsydbodyVal,
     shuqijsqdbodyVal: shuqijsqdbodyVal,
     shuqijsqdspyurlVal: shuqijsqdspyurlVal,
-    shuqijsqdspbodyVal: shuqijsqdspbodyVal,
+    //shuqijsqdspbodyVal: shuqijsqdspbodyVal,
     shuqijsrwbodyVal: shuqijsrwbodyVal,
     shuqijsfxbodyVal: shuqijsfxbodyVal,
     shuqijsbookurlVal: shuqijsbookurlVal,
-    shuqijsbookbodyVal: shuqijsbookbodyVal,
+    //shuqijsbookbodyVal: shuqijsbookbodyVal,
     shuqijssprwurlVal: shuqijssprwurlVal
 
 }
