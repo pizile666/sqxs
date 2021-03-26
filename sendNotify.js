@@ -1,8 +1,3 @@
-pizile
-/
-ZY
-1
-11
 Code
 Issues
 Pull requests
@@ -21,33 +16,33 @@ Latest commit 6147c8c 3 days ago
 255 lines (245 sloc)  14.4 KB
   
 const $ = new Env();
-// =======================================Î¢ÐÅserver½´Í¨ÖªÉèÖÃÇøÓò===========================================
-//´Ë´¦ÌîÄãÉêÇëµÄSCKEY.
-//×¢£º´Ë´¦ÉèÖÃgithub actionÓÃ»§ÌîÐ´µ½Settings-SecretsÀïÃæ(NameÊäÈëPUSH_KEY)
+// =======================================å¾®ä¿¡serveré…±é€šçŸ¥è®¾ç½®åŒºåŸŸ===========================================
+//æ­¤å¤„å¡«ä½ ç”³è¯·çš„SCKEY.
+//æ³¨ï¼šæ­¤å¤„è®¾ç½®github actionç”¨æˆ·å¡«å†™åˆ°Settings-Secretsé‡Œé¢(Nameè¾“å…¥PUSH_KEY)
 let SCKEY = '';
 
-// =======================================Bark AppÍ¨ÖªÉèÖÃÇøÓò===========================================
-//´Ë´¦ÌîÄãBarkAPPµÄÐÅÏ¢(IP/Éè±¸Âë£¬ÀýÈç£ºhttps://api.day.app/XXXXXXXX)
-//×¢£º´Ë´¦ÉèÖÃgithub actionÓÃ»§ÌîÐ´µ½Settings-SecretsÀïÃæ£¨NameÊäÈëBARK_PUSH£©
+// =======================================Bark Appé€šçŸ¥è®¾ç½®åŒºåŸŸ===========================================
+//æ­¤å¤„å¡«ä½ BarkAPPçš„ä¿¡æ¯(IP/è®¾å¤‡ç ï¼Œä¾‹å¦‚ï¼šhttps://api.day.app/XXXXXXXX)
+//æ³¨ï¼šæ­¤å¤„è®¾ç½®github actionç”¨æˆ·å¡«å†™åˆ°Settings-Secretsé‡Œé¢ï¼ˆNameè¾“å…¥BARK_PUSHï¼‰
 let BARK_PUSH = '';
-//BARK appÍÆËÍÁåÉù,ÁåÉùÁÐ±íÈ¥APP²é¿´¸´ÖÆÌîÐ´
-//×¢£º´Ë´¦ÉèÖÃgithub actionÓÃ»§ÌîÐ´µ½Settings-SecretsÀïÃæ£¨NameÊäÈëBARK_SOUND , ValueÊäÈëappÌá¹©µÄÁåÉùÃû³Æ£¬ÀýÈç:birdsong£©
+//BARK appæŽ¨é€é“ƒå£°,é“ƒå£°åˆ—è¡¨åŽ»APPæŸ¥çœ‹å¤åˆ¶å¡«å†™
+//æ³¨ï¼šæ­¤å¤„è®¾ç½®github actionç”¨æˆ·å¡«å†™åˆ°Settings-Secretsé‡Œé¢ï¼ˆNameè¾“å…¥BARK_SOUND , Valueè¾“å…¥appæä¾›çš„é“ƒå£°åç§°ï¼Œä¾‹å¦‚:birdsongï¼‰
 let BARK_SOUND = '';
 
 
-// =======================================telegram»úÆ÷ÈËÍ¨ÖªÉèÖÃÇøÓò===========================================
-//´Ë´¦ÌîÄãtelegram bot µÄToken£¬ÀýÈç£º1077xxx4424:AAFjv0FcqxxxxxxgEMGfi22B4yh15R5uw
-//×¢£º´Ë´¦ÉèÖÃgithub actionÓÃ»§ÌîÐ´µ½Settings-SecretsÀïÃæ(NameÊäÈëTG_BOT_TOKEN)
+// =======================================telegramæœºå™¨äººé€šçŸ¥è®¾ç½®åŒºåŸŸ===========================================
+//æ­¤å¤„å¡«ä½ telegram bot çš„Tokenï¼Œä¾‹å¦‚ï¼š1077xxx4424:AAFjv0FcqxxxxxxgEMGfi22B4yh15R5uw
+//æ³¨ï¼šæ­¤å¤„è®¾ç½®github actionç”¨æˆ·å¡«å†™åˆ°Settings-Secretsé‡Œé¢(Nameè¾“å…¥TG_BOT_TOKEN)
 let TG_BOT_TOKEN = '';
-//´Ë´¦ÌîÄã½ÓÊÕÍ¨ÖªÏûÏ¢µÄtelegramÓÃ»§µÄid£¬ÀýÈç£º129xxx206
-//×¢£º´Ë´¦ÉèÖÃgithub actionÓÃ»§ÌîÐ´µ½Settings-SecretsÀïÃæ(NameÊäÈëTG_USER_ID)
+//æ­¤å¤„å¡«ä½ æŽ¥æ”¶é€šçŸ¥æ¶ˆæ¯çš„telegramç”¨æˆ·çš„idï¼Œä¾‹å¦‚ï¼š129xxx206
+//æ³¨ï¼šæ­¤å¤„è®¾ç½®github actionç”¨æˆ·å¡«å†™åˆ°Settings-Secretsé‡Œé¢(Nameè¾“å…¥TG_USER_ID)
 let TG_USER_ID = '';
 
-// =======================================¶¤¶¤»úÆ÷ÈËÍ¨ÖªÉèÖÃÇøÓò===========================================
-//´Ë´¦ÌîÄã¶¤¶¤ bot µÄwebhook£¬ÀýÈç£º5a544165465465645d0f31dca676e7bd07415asdasd
-//×¢£º´Ë´¦ÉèÖÃgithub actionÓÃ»§ÌîÐ´µ½Settings-SecretsÀïÃæ(NameÊäÈëDD_BOT_TOKEN)
+// =======================================é’‰é’‰æœºå™¨äººé€šçŸ¥è®¾ç½®åŒºåŸŸ===========================================
+//æ­¤å¤„å¡«ä½ é’‰é’‰ bot çš„webhookï¼Œä¾‹å¦‚ï¼š5a544165465465645d0f31dca676e7bd07415asdasd
+//æ³¨ï¼šæ­¤å¤„è®¾ç½®github actionç”¨æˆ·å¡«å†™åˆ°Settings-Secretsé‡Œé¢(Nameè¾“å…¥DD_BOT_TOKEN)
 let DD_BOT_TOKEN = '';
-//ÃÜÔ¿£¬»úÆ÷ÈË°²È«ÉèÖÃÒ³Ãæ£¬¼ÓÇ©Ò»À¸ÏÂÃæÏÔÊ¾µÄSEC¿ªÍ·µÄ×Ö·û´®
+//å¯†é’¥ï¼Œæœºå™¨äººå®‰å…¨è®¾ç½®é¡µé¢ï¼ŒåŠ ç­¾ä¸€æ ä¸‹é¢æ˜¾ç¤ºçš„SECå¼€å¤´çš„å­—ç¬¦ä¸²
 let DD_BOT_SECRET = '';
 
 if (process.env.PUSH_KEY) {
@@ -55,7 +50,7 @@ if (process.env.PUSH_KEY) {
 }
 if (process.env.BARK_PUSH) {
   if(process.env.BARK_PUSH.indexOf('https') > -1 || process.env.BARK_PUSH.indexOf('http') > -1) {
-    //¼æÈÝBARK×Ô½¨ÓÃ»§
+    //å…¼å®¹BARKè‡ªå»ºç”¨æˆ·
     BARK_PUSH = process.env.BARK_PUSH
   } else {
     BARK_PUSH = `https://api.day.app/${process.env.BARK_PUSH}`
@@ -65,7 +60,7 @@ if (process.env.BARK_PUSH) {
   }
 } else {
   if(BARK_PUSH && BARK_PUSH.indexOf('https') === -1 && BARK_PUSH.indexOf('http') === -1) {
-    //¼æÈÝBARK±¾µØÓÃ»§Ö»ÌîÐ´Éè±¸ÂëµÄÇé¿ö
+    //å…¼å®¹BARKæœ¬åœ°ç”¨æˆ·åªå¡«å†™è®¾å¤‡ç çš„æƒ…å†µ
     BARK_PUSH = `https://api.day.app/${BARK_PUSH}`
   }
 }
@@ -84,7 +79,7 @@ if (process.env.DD_BOT_TOKEN) {
 }
 
 async function sendNotify(text, desp) {
-  //Ìá¹©ËÄÖÖÍ¨Öª
+  //æä¾›å››ç§é€šçŸ¥
   await serverNotify(text, desp);
   await BarkNotify(text, desp);
   await tgBotNotify(text, desp);
@@ -94,7 +89,7 @@ async function sendNotify(text, desp) {
 function serverNotify(text, desp) {
   return  new Promise(resolve => {
     if (SCKEY) {
-      //Î¢ÐÅserver½´ÍÆËÍÍ¨ÖªÒ»¸ö\n²»»á»»ÐÐ£¬ÐèÒªÁ½¸ö\n²ÅÄÜ»»ÐÐ£¬¹Ê×ö´ËÌæ»»
+      //å¾®ä¿¡serveré…±æŽ¨é€é€šçŸ¥ä¸€ä¸ª\nä¸ä¼šæ¢è¡Œï¼Œéœ€è¦ä¸¤ä¸ª\næ‰èƒ½æ¢è¡Œï¼Œæ•…åšæ­¤æ›¿æ¢
       desp = desp.replace(/[\n\r]/g, '\n\n');
       const options = {
         url: `https://sc.ftqq.com/${SCKEY}.send`,
@@ -106,14 +101,14 @@ function serverNotify(text, desp) {
       $.post(options, (err, resp, data) => {
         try {
           if (err) {
-            console.log('\n·¢ËÍÍ¨Öªµ÷ÓÃAPIÊ§°Ü£¡£¡\n')
+            console.log('\nå‘é€é€šçŸ¥è°ƒç”¨APIå¤±è´¥ï¼ï¼\n')
             console.log(err);
           } else {
             data = JSON.parse(data);
             if (data.errno === 0) {
-              console.log('\nserver½´·¢ËÍÍ¨ÖªÏûÏ¢³É¹¦\n')
+              console.log('\nserveré…±å‘é€é€šçŸ¥æ¶ˆæ¯æˆåŠŸ\n')
             } else if (data.errno === 1024) {
-              console.log('\nPUSH_KEY ´íÎó\n')
+              console.log('\nPUSH_KEY é”™è¯¯\n')
             }
           }
         } catch (e) {
@@ -123,7 +118,7 @@ function serverNotify(text, desp) {
         }
       })
     } else {
-      console.log('\nÄúÎ´Ìá¹©server½´µÄSCKEY£¬È¡ÏûÎ¢ÐÅÍÆËÍÏûÏ¢Í¨Öª\n');
+      console.log('\næ‚¨æœªæä¾›serveré…±çš„SCKEYï¼Œå–æ¶ˆå¾®ä¿¡æŽ¨é€æ¶ˆæ¯é€šçŸ¥\n');
       resolve()
     }
   })
@@ -138,12 +133,12 @@ function BarkNotify(text, desp) {
       $.get(options, (err, resp, data) => {
         try {
           if (err) {
-            console.log('\nBark APP·¢ËÍÍ¨Öªµ÷ÓÃAPIÊ§°Ü£¡£¡\n')
+            console.log('\nBark APPå‘é€é€šçŸ¥è°ƒç”¨APIå¤±è´¥ï¼ï¼\n')
             console.log(err);
           } else {
             data = JSON.parse(data);
             if (data.code === 200) {
-              console.log('\nBark APP·¢ËÍÍ¨ÖªÏûÏ¢³É¹¦\n')
+              console.log('\nBark APPå‘é€é€šçŸ¥æ¶ˆæ¯æˆåŠŸ\n')
             } else {
               console.log(`\n${data.message}\n`);
             }
@@ -155,7 +150,7 @@ function BarkNotify(text, desp) {
         }
       })
     } else {
-      console.log('\nÄúÎ´Ìá¹©BarkµÄAPPÍÆËÍBARK_PUSH£¬È¡ÏûBarkÍÆËÍÏûÏ¢Í¨Öª\n');
+      console.log('\næ‚¨æœªæä¾›Barkçš„APPæŽ¨é€BARK_PUSHï¼Œå–æ¶ˆBarkæŽ¨é€æ¶ˆæ¯é€šçŸ¥\n');
       resolve()
     }
   })
@@ -174,16 +169,16 @@ function tgBotNotify(text, desp) {
       $.post(options, (err, resp, data) => {
         try {
           if (err) {
-            console.log('\ntelegram·¢ËÍÍ¨ÖªÏûÏ¢Ê§°Ü£¡£¡\n')
+            console.log('\ntelegramå‘é€é€šçŸ¥æ¶ˆæ¯å¤±è´¥ï¼ï¼\n')
             console.log(err);
           } else {
             data = JSON.parse(data);
             if (data.ok) {
-              console.log('\nTelegram·¢ËÍÍ¨ÖªÏûÏ¢Íê³É¡£\n')
+              console.log('\nTelegramå‘é€é€šçŸ¥æ¶ˆæ¯å®Œæˆã€‚\n')
             } else if (data.error_code === 400) {
-              console.log('\nÇëÖ÷¶¯¸øbot·¢ËÍÒ»ÌõÏûÏ¢²¢¼ì²é½ÓÊÕÓÃ»§IDÊÇ·ñÕýÈ·¡£\n')
+              console.log('\nè¯·ä¸»åŠ¨ç»™botå‘é€ä¸€æ¡æ¶ˆæ¯å¹¶æ£€æŸ¥æŽ¥æ”¶ç”¨æˆ·IDæ˜¯å¦æ­£ç¡®ã€‚\n')
             } else if (data.error_code === 401){
-              console.log('\nTelegram bot token ÌîÐ´´íÎó¡£\n')
+              console.log('\nTelegram bot token å¡«å†™é”™è¯¯ã€‚\n')
             }
           }
         } catch (e) {
@@ -193,7 +188,7 @@ function tgBotNotify(text, desp) {
         }
       })
     } else {
-      console.log('\nÄúÎ´Ìá¹©telegram»úÆ÷ÈËÍÆËÍËùÐèµÄTG_BOT_TOKENºÍTG_USER_ID£¬È¡ÏûtelegramÍÆËÍÏûÏ¢Í¨Öª\n');
+      console.log('\næ‚¨æœªæä¾›telegramæœºå™¨äººæŽ¨é€æ‰€éœ€çš„TG_BOT_TOKENå’ŒTG_USER_IDï¼Œå–æ¶ˆtelegramæŽ¨é€æ¶ˆæ¯é€šçŸ¥\n');
       resolve()
     }
   })
@@ -222,12 +217,12 @@ function ddBotNotify(text, desp) {
       $.post(options, (err, resp, data) => {
         try {
           if (err) {
-            console.log('\n¶¤¶¤·¢ËÍÍ¨ÖªÏûÏ¢Ê§°Ü£¡£¡\n')
+            console.log('\né’‰é’‰å‘é€é€šçŸ¥æ¶ˆæ¯å¤±è´¥ï¼ï¼\n')
             console.log(err);
           } else {
             data = JSON.parse(data);
             if (data.errcode === 0) {
-              console.log('\n¶¤¶¤·¢ËÍÍ¨ÖªÏûÏ¢Íê³É¡£\n')
+              console.log('\né’‰é’‰å‘é€é€šçŸ¥æ¶ˆæ¯å®Œæˆã€‚\n')
             } else {
               console.log(`\n${data.errmsg}\n`)
             }
@@ -242,12 +237,12 @@ function ddBotNotify(text, desp) {
       $.post(options, (err, resp, data) => {
         try {
           if (err) {
-            console.log('\n¶¤¶¤·¢ËÍÍ¨ÖªÏûÏ¢Ê§°Ü£¡£¡\n')
+            console.log('\né’‰é’‰å‘é€é€šçŸ¥æ¶ˆæ¯å¤±è´¥ï¼ï¼\n')
             console.log(err);
           } else {
             data = JSON.parse(data);
             if (data.errcode === 0) {
-              console.log('\n¶¤¶¤·¢ËÍÍ¨ÖªÏûÏ¢Íê³É¡£\n')
+              console.log('\né’‰é’‰å‘é€é€šçŸ¥æ¶ˆæ¯å®Œæˆã€‚\n')
             } else {
               console.log(`\n${data.errmsg}\n`)
             }
@@ -259,7 +254,7 @@ function ddBotNotify(text, desp) {
         }
       })
     } else {
-      console.log('\nÄúÎ´Ìá¹©¶¤¶¤»úÆ÷ÈËÍÆËÍËùÐèµÄDD_BOT_TOKEN»òÕßDD_BOT_SECRET£¬È¡Ïû¶¤¶¤ÍÆËÍÏûÏ¢Í¨Öª\n');
+      console.log('\næ‚¨æœªæä¾›é’‰é’‰æœºå™¨äººæŽ¨é€æ‰€éœ€çš„DD_BOT_TOKENæˆ–è€…DD_BOT_SECRETï¼Œå–æ¶ˆé’‰é’‰æŽ¨é€æ¶ˆæ¯é€šçŸ¥\n');
       resolve()
     }
   })
@@ -272,6 +267,6 @@ module.exports = {
   TG_BOT_TOKEN,
   TG_USER_ID,
   DD_BOT_TOKEN,
-}//ÕâÀïµ¼³öSCKEY,BARK_PUSHµÈÍ¨Öª²ÎÊýÊÇjd_bean_sign.js´¦ÐèÒª
+}//è¿™é‡Œå¯¼å‡ºSCKEY,BARK_PUSHç­‰é€šçŸ¥å‚æ•°æ˜¯jd_bean_sign.jså¤„éœ€è¦
 // prettier-ignore
 function Env(t,s){return new class{constructor(t,s){this.name=t,this.data=null,this.dataFile="box.dat",this.logs=[],this.logSeparator="\n",this.startTime=(new Date).getTime(),Object.assign(this,s),this.log("",`\ud83d\udd14${this.name}, \u5f00\u59cb!`)}isNode(){return"undefined"!=typeof module&&!!module.exports}isQuanX(){return"undefined"!=typeof $task}isSurge(){return"undefined"!=typeof $httpClient&&"undefined"==typeof $loon}isLoon(){return"undefined"!=typeof $loon}getScript(t){return new Promise(s=>{$.get({url:t},(t,e,i)=>s(i))})}runScript(t,s){return new Promise(e=>{let i=this.getdata("@chavy_boxjs_userCfgs.httpapi");i=i?i.replace(/\n/g,"").trim():i;let o=this.getdata("@chavy_boxjs_userCfgs.httpapi_timeout");o=o?1*o:20,o=s&&s.timeout?s.timeout:o;const[h,a]=i.split("@"),r={url:`http://${a}/v1/scripting/evaluate`,body:{script_text:t,mock_type:"cron",timeout:o},headers:{"X-Key":h,Accept:"*/*"}};$.post(r,(t,s,i)=>e(i))}).catch(t=>this.logErr(t))}loaddata(){if(!this.isNode())return{};{this.fs=this.fs?this.fs:require("fs"),this.path=this.path?this.path:require("path");const t=this.path.resolve(this.dataFile),s=this.path.resolve(process.cwd(),this.dataFile),e=this.fs.existsSync(t),i=!e&&this.fs.existsSync(s);if(!e&&!i)return{};{const i=e?t:s;try{return JSON.parse(this.fs.readFileSync(i))}catch(t){return{}}}}}writedata(){if(this.isNode()){this.fs=this.fs?this.fs:require("fs"),this.path=this.path?this.path:require("path");const t=this.path.resolve(this.dataFile),s=this.path.resolve(process.cwd(),this.dataFile),e=this.fs.existsSync(t),i=!e&&this.fs.existsSync(s),o=JSON.stringify(this.data);e?this.fs.writeFileSync(t,o):i?this.fs.writeFileSync(s,o):this.fs.writeFileSync(t,o)}}lodash_get(t,s,e){const i=s.replace(/\[(\d+)\]/g,".$1").split(".");let o=t;for(const t of i)if(o=Object(o)[t],void 0===o)return e;return o}lodash_set(t,s,e){return Object(t)!==t?t:(Array.isArray(s)||(s=s.toString().match(/[^.[\]]+/g)||[]),s.slice(0,-1).reduce((t,e,i)=>Object(t[e])===t[e]?t[e]:t[e]=Math.abs(s[i+1])>>0==+s[i+1]?[]:{},t)[s[s.length-1]]=e,t)}getdata(t){let s=this.getval(t);if(/^@/.test(t)){const[,e,i]=/^@(.*?)\.(.*?)$/.exec(t),o=e?this.getval(e):"";if(o)try{const t=JSON.parse(o);s=t?this.lodash_get(t,i,""):s}catch(t){s=""}}return s}setdata(t,s){let e=!1;if(/^@/.test(s)){const[,i,o]=/^@(.*?)\.(.*?)$/.exec(s),h=this.getval(i),a=i?"null"===h?null:h||"{}":"{}";try{const s=JSON.parse(a);this.lodash_set(s,o,t),e=this.setval(JSON.stringify(s),i)}catch(s){const h={};this.lodash_set(h,o,t),e=this.setval(JSON.stringify(h),i)}}else e=$.setval(t,s);return e}getval(t){return this.isSurge()||this.isLoon()?$persistentStore.read(t):this.isQuanX()?$prefs.valueForKey(t):this.isNode()?(this.data=this.loaddata(),this.data[t]):this.data&&this.data[t]||null}setval(t,s){return this.isSurge()||this.isLoon()?$persistentStore.write(t,s):this.isQuanX()?$prefs.setValueForKey(t,s):this.isNode()?(this.data=this.loaddata(),this.data[s]=t,this.writedata(),!0):this.data&&this.data[s]||null}initGotEnv(t){this.got=this.got?this.got:require("got"),this.cktough=this.cktough?this.cktough:require("tough-cookie"),this.ckjar=this.ckjar?this.ckjar:new this.cktough.CookieJar,t&&(t.headers=t.headers?t.headers:{},void 0===t.headers.Cookie&&void 0===t.cookieJar&&(t.cookieJar=this.ckjar))}get(t,s=(()=>{})){t.headers&&(delete t.headers["Content-Type"],delete t.headers["Content-Length"]),this.isSurge()||this.isLoon()?$httpClient.get(t,(t,e,i)=>{!t&&e&&(e.body=i,e.statusCode=e.status),s(t,e,i)}):this.isQuanX()?$task.fetch(t).then(t=>{const{statusCode:e,statusCode:i,headers:o,body:h}=t;s(null,{status:e,statusCode:i,headers:o,body:h},h)},t=>s(t)):this.isNode()&&(this.initGotEnv(t),this.got(t).on("redirect",(t,s)=>{try{const e=t.headers["set-cookie"].map(this.cktough.Cookie.parse).toString();this.ckjar.setCookieSync(e,null),s.cookieJar=this.ckjar}catch(t){this.logErr(t)}}).then(t=>{const{statusCode:e,statusCode:i,headers:o,body:h}=t;s(null,{status:e,statusCode:i,headers:o,body:h},h)},t=>s(t)))}post(t,s=(()=>{})){if(t.body&&t.headers&&!t.headers["Content-Type"]&&(t.headers["Content-Type"]="application/x-www-form-urlencoded"),delete t.headers["Content-Length"],this.isSurge()||this.isLoon())$httpClient.post(t,(t,e,i)=>{!t&&e&&(e.body=i,e.statusCode=e.status),s(t,e,i)});else if(this.isQuanX())t.method="POST",$task.fetch(t).then(t=>{const{statusCode:e,statusCode:i,headers:o,body:h}=t;s(null,{status:e,statusCode:i,headers:o,body:h},h)},t=>s(t));else if(this.isNode()){this.initGotEnv(t);const{url:e,...i}=t;this.got.post(e,i).then(t=>{const{statusCode:e,statusCode:i,headers:o,body:h}=t;s(null,{status:e,statusCode:i,headers:o,body:h},h)},t=>s(t))}}time(t){let s={"M+":(new Date).getMonth()+1,"d+":(new Date).getDate(),"H+":(new Date).getHours(),"m+":(new Date).getMinutes(),"s+":(new Date).getSeconds(),"q+":Math.floor(((new Date).getMonth()+3)/3),S:(new Date).getMilliseconds()};/(y+)/.test(t)&&(t=t.replace(RegExp.$1,((new Date).getFullYear()+"").substr(4-RegExp.$1.length)));for(let e in s)new RegExp("("+e+")").test(t)&&(t=t.replace(RegExp.$1,1==RegExp.$1.length?s[e]:("00"+s[e]).substr((""+s[e]).length)));return t}msg(s=t,e="",i="",o){const h=t=>!t||!this.isLoon()&&this.isSurge()?t:"string"==typeof t?this.isLoon()?t:this.isQuanX()?{"open-url":t}:void 0:"object"==typeof t&&(t["open-url"]||t["media-url"])?this.isLoon()?t["open-url"]:this.isQuanX()?t:void 0:void 0;$.isMute||(this.isSurge()||this.isLoon()?$notification.post(s,e,i,h(o)):this.isQuanX()&&$notify(s,e,i,h(o))),this.logs.push("","==============\ud83d\udce3\u7cfb\u7edf\u901a\u77e5\ud83d\udce3=============="),this.logs.push(s),e&&this.logs.push(e),i&&this.logs.push(i)}log(...t){t.length>0?this.logs=[...this.logs,...t]:console.log(this.logs.join(this.logSeparator))}logErr(t,s){const e=!this.isSurge()&&!this.isQuanX()&&!this.isLoon();e?$.log("",`\u2757\ufe0f${this.name}, \u9519\u8bef!`,t.stack):$.log("",`\u2757\ufe0f${this.name}, \u9519\u8bef!`,t)}wait(t){return new Promise(s=>setTimeout(s,t))}done(t={}){const s=(new Date).getTime(),e=(s-this.startTime)/1e3;this.log("",`\ud83d\udd14${this.name}, \u7ed3\u675f! \ud83d\udd5b ${e} \u79d2`),this.log(),(this.isSurge()||this.isQuanX()||this.isLoon())&&$done(t)}}(t,s)}
