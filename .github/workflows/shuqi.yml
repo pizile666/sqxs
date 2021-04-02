@@ -38,6 +38,7 @@ jobs:
           #RLURL: ${{ secrets.RLURL }}
           #RLHEADER: ${{ secrets.RLHEADER }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
