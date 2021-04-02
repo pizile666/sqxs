@@ -1,4 +1,4 @@
-name: shuqi@ziye
+name: 书旗@ziye
 
 on:
   workflow_dispatch:
