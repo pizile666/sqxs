@@ -18,20 +18,20 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/pizile/ZY.git ~/ZY
+       
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
       - name: npm install
         run: |
-          cd ~/ZY
-          git checkout age174
+        
+          
           npm install
       - name: '运行 【最强蜗牛】'
         run: |
-          cd ~/ZY
-          node zqwn.js
+        
+          node Task/zqwn.js
         env:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
