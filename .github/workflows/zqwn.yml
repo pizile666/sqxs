@@ -1,0 +1,37 @@
+﻿name: 最强蜗牛
+
+on:
+  workflow_dispatch:
+  schedule:
+     - cron: '0/30 2,4,6,8 * * *'
+  watch:
+    types: started
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    env:
+        ZQWN_HD: ${{ secrets.ZQWN_HD }}
+        ZQWN_URL: ${{ secrets.ZQWN_URL }}		
+        ZQWN_BODY: ${{ secrets.ZQWN_BODY }}	
+        
+    steps:
+      - name: Checkout
+        run: |
+          git clone https://github.com/pizile/ZY.git ~/ZY
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: npm install
+        run: |
+          cd ~/ZY
+          git checkout age174
+          npm install
+      - name: '运行 【最强蜗牛】'
+        run: |
+          cd ~/ZY
+          node zqwn.js
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
