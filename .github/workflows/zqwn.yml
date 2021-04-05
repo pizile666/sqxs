@@ -1,4 +1,4 @@
-name: 春风赚
+name: 最强蜗牛
 
 
 on:
@@ -12,8 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-        CFZ_URL: ${{ secrets.CFZ_URL }}
-        CFZ_HD: ${{ secrets.CFZ_HD }}      
+        ZQWN_HD: ${{ secrets.ZQWN_HD }}
+        ZQWN_URL: ${{ secrets.ZQWN_URL }}		
+        ZQWN_BODY: ${{ secrets.ZQWN_BODY }}  
         TZ: Asia/shanghai
     steps:
       - name: Checkout
@@ -26,10 +27,10 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【春风赚】'
-        if: env.CFZ_HD
+      - name: '运行 【最强蜗牛】'
+        if: env.ZQWN_HD
         run: |
-          node Task/cfz.js
+          node Task/zqwn.js
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
