@@ -1,9 +1,10 @@
-﻿name: 最强蜗牛
+name: 春风赚
+
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '0/30 2,4,6,8 * * *'
+     - cron: '12 * * * *'
   watch:
     types: started
 jobs:
@@ -11,27 +12,29 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-        ZQWN_HD: ${{ secrets.ZQWN_HD }}
-        ZQWN_URL: ${{ secrets.ZQWN_URL }}		
-        ZQWN_BODY: ${{ secrets.ZQWN_BODY }}	
-        
+        CFZ_URL: ${{ secrets.CFZ_URL }}
+        CFZ_HD: ${{ secrets.CFZ_HD }}      
+        TZ: Asia/shanghai
     steps:
       - name: Checkout
-        run: |
-       
+        uses: actions/checkout@v1
+        
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
       - name: npm install
         run: |
-        
-          
           npm install
-      - name: '运行 【最强蜗牛】'
+      - name: '运行 【春风赚】'
+        if: env.CFZ_HD
         run: |
-        
-          node Task/zqwn.js
+          node Task/cfz.js
         env:
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
