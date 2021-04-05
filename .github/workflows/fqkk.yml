@@ -12,7 +12,7 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
     env:
         FQKK_URL: ${{ secrets.FQKK_URL }}
-        fqkkhd: ${{ secrets.fqkkhd }}       
+        FQKK_HD: ${{ secrets.FQKK_HD }}       
         TZ: Asia/shanghai
     steps:
       - name: Checkout
