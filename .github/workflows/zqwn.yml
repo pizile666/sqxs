@@ -4,7 +4,7 @@ name: 最强蜗牛
 on:
   workflow_dispatch:
   schedule:
-     - cron: '12 2 * * *'
+     - cron: '12 2,6 * * *'
   watch:
     types: started
 jobs:
