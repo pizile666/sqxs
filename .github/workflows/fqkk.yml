@@ -1,4 +1,4 @@
-﻿name: 番茄看看 
+﻿name: 番茄看看
 
 on:
   workflow_dispatch:
